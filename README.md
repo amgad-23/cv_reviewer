@@ -60,9 +60,9 @@ also offers a simple chatbot interface to query the CV data.
 ├── tests/
 ├── __init__.py
 │   ├── test_unit/
-│   │   ├── test_ocr.py
 │   │   ├── test_llm.py
-│   │   ├── test_parsing.py
+│   │   ├── test_mysql.py
+│   │   ├── test_ocr.py
 │   ├── test_integration/
 │   │   ├── test_upload.py
 │   │   ├── test_query.py
