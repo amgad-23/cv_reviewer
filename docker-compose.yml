@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .  # path to where Dockerfile is
+      dockerfile: Dockerfile
+    container_name: my_fastapi_app
+    env_file:
+      - .env
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DB_URL=postgresql://postgres:postgres@db:5432/postgres
+    ports:
+      - "8000:8000"  # Host port : Container port
+    depends_on:
+      - redis
+      - db
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: my_redis
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres:14-alpine
+    container_name: my_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    # volumes:
+    #   - db_data:/var/lib/postgresql/data
+
+volumes:
+ db_data:
+   driver: local
