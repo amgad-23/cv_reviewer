@@ -30,3 +30,9 @@ def experience_in_industry(industry: str, db: Session = Depends(get_db)):
 def match_candidates(requirements: dict, db: Session = Depends(get_db)):
     results = cv_query_service.match_candidates_for_job_requirements(db, requirements)
     return {"count": len(results), "candidates": results}
+
+
+@router.get("/all-cv-records")
+def all_cv_records(db: Session = Depends(get_db)):
+    results = cv_query_service.get_all_cv_records(db)
+    return {"count": len(results), "candidates": results}

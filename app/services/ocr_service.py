@@ -41,7 +41,7 @@ def extract_text_from_file(file_path: str) -> str:
     else:
         module_logger.error("Unsupported file format. Only PDF, Word, and image files are supported.")
         raise ValueError("Unsupported file format. Only PDF, Word, and image files are supported.")
-    module_logger.info(f"Extracted text: {text}")
+    module_logger.debug(f"Extracted text: {text}")
     return text
 
 

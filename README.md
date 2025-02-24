@@ -30,7 +30,6 @@ also offers a simple chatbot interface to query the CV data.
 │   │   └── redis_client.py
 │   ├── llm/
 │   │   ├── claude_llm_client.py
-│   │   ├── huggingface_llm_client.py
 │   │   ├── mimic_llm_client.py
 │   │   └── openai_llm_client.py
 │   ├── models/
@@ -94,6 +93,24 @@ also offers a simple chatbot interface to query the CV data.
     ```
 
 ## setup by python
+
+### prerequisites
+- install wsl (windows subsystem for linux) and install ubuntu 20.04 for redis server
+```powershell
+wsl --install
+wsl --set-version Ubuntu-20.04 2
+wsl -d Ubuntu-20.04
+wsl.exe -d Ubuntu
+```
+```bash
+sudo apt update
+sudo apt install redis
+redis-server --daemonize yes
+```
+for confirmation
+```bash
+redis-cli ping
+```
 
 2. **create a virtual environment**
 
@@ -161,3 +178,4 @@ also offers a simple chatbot interface to query the CV data.
   at `http://localhost:8000/v1/experience-in-industry`.
 - the Chatbot interface for querying matching candidates information is available
   at `http://localhost:8000/v1/match-candidates`.
+- check on all cv queries at `http://localhost:8000/v1/all-cv-records`.

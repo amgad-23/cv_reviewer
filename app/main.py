@@ -14,7 +14,7 @@ rate_dependencies = [Depends(RateLimiter(times=5, seconds=60))]
 
 @app.on_event("startup")
 async def on_startup():
-    await FastAPILimiter.init(redis_service)
+    await FastAPILimiter.init(redis_service.redis_client)
 
 
 app.include_router(upload.router, prefix="/v1", tags=["Upload"], dependencies=rate_dependencies)

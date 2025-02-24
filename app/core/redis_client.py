@@ -1,7 +1,5 @@
 import json
-
-import redis
-
+import redis.asyncio as redis
 from app.core.config import settings
 
 
@@ -11,7 +9,7 @@ class BaseRedisService:
             host=settings.REDIS_HOST,
             port=settings.REDIS_PORT,
             db=settings.REDIS_DB,
-            password=settings.REDIS_PASSWORD,
+            password=None,
             decode_responses=True  # so Redis returns strings not bytes
         )
 

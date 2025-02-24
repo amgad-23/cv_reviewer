@@ -14,14 +14,14 @@ class Settings(BaseSettings):
     REDIS_PORT = 6379
     REDIS_DB = 0
     CONVERSATION_TTL = 3600
-    REDIS_PASSWORD = None
+    # REDIS_PASSWORD = None
     # logger
     LOG_LEVEL = 'INFO'
     LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     LOG_FILE_PATH = 'app.json.log'
 
     class Config:
-        env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", '.env')
+        env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", '.env')
 
 
 settings = Settings()
